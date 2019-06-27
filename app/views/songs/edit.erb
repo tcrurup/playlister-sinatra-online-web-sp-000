@@ -14,7 +14,7 @@
       <td>
         <%Genre.all.each do |genre| %>
           <label for='<%=genre.name%>'> <%=genre.name%> </label>
-          <input id='<%=genre.name%>' type='checkbox' name='genres[]' value='<%=genre.id%>' <%if !@song.genres.include?(genre) %> checked='true' <% end %>>
+          <input id='<%=genre.name%>' type='checkbox' name='genres[]' value='<%=genre.id%>' <%if @song.genres.include?(genre) %> checked='true' <% end %>>
         <% end %>
       </td>
     </tr>
