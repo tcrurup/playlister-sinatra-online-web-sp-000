@@ -10,11 +10,11 @@
 
     <tr>
       <td><input type='text' name='name' id='Name' value ='<%=@song.name%>'></td>
-      <td><input type='text' name='artist_name' id='Artist Name' value='<%=@song.artist.name%>'></td>
+      <td><input type='text' name='artist_name' id='Artist Name' value='<%=@song.artist_name%>'></td>
       <td>
         <%Genre.all.each do |genre| %>
           <label for='<%=genre.name%>'> <%=genre.name%> </label>
-          <input id='<%=genre.name%>' type='checkbox' name='genres[]' value='<%=genre.id%>'>
+          <input id='<%=genre.name%>' type='checkbox' name='genres[]' value='<%=genre.id%>' <%if @song.genres.include?(genre) %> 'checked' <% end %>>
         <% end %>
       </td>
     </tr>
