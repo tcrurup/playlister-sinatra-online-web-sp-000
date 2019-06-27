@@ -35,7 +35,10 @@ class SongsController < ApplicationController
     song = Song.find_by_slug(params[:slug])
     song.name = params[:name]
     song.artist = Artist.find_or_create_by(name: params[:artist_name])
-    song.update(genres: params[:genres])
+    song.genres.clear
+    params[:genres].each do |genre_id|
+      song.genres.push(Genre.find(genre_id))
+    end
     song.save
     redirect "/songs/#{song.slug}"
   end
